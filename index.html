@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimagine Games - Studio Game Emosional</title>
+    <meta name="description" content="Alimagine Games adalah studio game independen yang menciptakan pengalaman bermain yang menyentuh hati dan menggerakkan jiwa.">
+    <meta name="keywords" content="game studio, game emosional, pengembang game independen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --black: #0D0D0D;
+            --orange: #FF6B00;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background-color: var(--black);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: rgba(13, 13, 13, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: var(--orange);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        header nav ul li {
+            padding: 0 1rem;
+        }
+
+        header nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: var(--orange);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 13, 13, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--orange);
+            font-size: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #FF8C00;
+            transform: translateY(-3px);
+        }
+
+        .game-preview {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .game-preview img {
+            width: 45%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .game-preview-content {
+            width: 50%;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-post h3 {
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--orange);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--black);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            header nav {
+                flex-direction: column;
+            }
+
+            header nav ul {
+                margin-top: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .game-preview {
+                flex-direction: column;
+            }
+
+            .game-preview img, .game-preview-content {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1>Alimagine Games</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#team">Tim</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Selamat datang di Alimagine Games</h1>
+                <p>Kami menciptakan pengalaman bermain yang menyentuh hati dan menggerakkan jiwa.</p>
+                <a href="#games" class="btn">Jelajahi Game Kami</a>
+            </div>
+        </section>
+
+        <section id="about" class="section container">
+            <h2>Tentang Kami</h2>
+            <p>Alimagine Games adalah studio game independen yang didedikasikan untuk menciptakan pengalaman bermain yang kaya akan emosi. Didirikan oleh sekelompok pengembang yang passionate, kami bertujuan untuk menghadirkan narasi yang kuat, karakter yang mendalam, dan mekanika permainan yang memicu respons emosional.</p>
+            <p>Visi kami adalah mengubah cara orang memandang dan merasakan video game, menjadikannya lebih dari sekadar hiburan, tapi juga sebagai bentuk seni yang dapat menyentuh hati dan pikiran.</p>
+        </section>
+
+        <section id="games" class="section container">
+            <h2>Game Kami</h2>
+            <div class="game-preview">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Preview Game Terbaru">
+                <div class="game-preview-content">
+                    <h3>Judul Game Terbaru</h3>
+                    <p>Sebuah perjalanan emosional yang mengeksplorasi tema persahabatan dan pengorbanan. Pemain akan diajak untuk merasakan berbagai spektrum emosi melalui narasi yang mendalam dan gameplay yang inovatif.</p>
+                    <a href="#" class="btn">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="section container">
+            <h2>Tim Kami</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Anggota Tim 1">
+                    <h3>Jane Doe</h3>
+                    <p>Lead Game Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Anggota Tim 2">
+                    <h3>John Smith</h3>
+                    <p>Lead Programmer</p>
+                </div>
+                <!-- Tambahkan anggota tim lainnya sesuai kebutuhan -->
+            </div>
+        </section>
+
+        <section id="blog" class="section container">
+            <h2>Blog</h2>
+            <div class="blog-posts">
+                <div class="blog-post">
+                    <h3>Mengapa Emosi Penting dalam Video Game</h3>
+                    <p>Eksplorasi mendalam tentang peran emosi dalam menciptakan pengalaman gaming yang tak terlupakan...</p>
+                    <a href="#" class="btn">Baca Selengkapnya</a>
+                </div>
+                <div class="blog-post">
+                    <h3>5 Game yang Berhasil Membangkitkan Emosi Pemain</h3>
+                    <p>Analisis mendalam tentang game-game yang berhasil menciptakan koneksi emosional dengan pemainnya...</p>
+                    <a href="#" class="btn">Baca Selengkapnya</a>
+                </div>
+                <div class="blog-post">
+                    <h3>Teknik Storytelling dalam Game</h3>
+                    <p>Panduan praktis tentang bagaimana menciptakan narasi yang kuat dan memukau dalam video game...</p>
+                    <a href="#" class="btn">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section container">
+            <h2>Hubungi Kami</h2>
+            <p>Kami selalu terbuka untuk diskusi, kolaborasi, atau sekadar berbagi passion tentang game yang emosional. Jangan ragu untuk menghubungi kami.</p>
+            <a href="mailto:info@alimaginegames.com" class="btn">Kirim Email</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Alimagine Games. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Change header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
